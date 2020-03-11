@@ -11,7 +11,7 @@ else
   HELM_COMMAND="helm home"
 fi
 
-: ${HELM_PLUGIN_PATH:="$($HELM_COMAND)/helm-unittest"}
+: ${HELM_PLUGIN_PATH:="$($HELM_COMMAND)/helm-unittest"}
 
 # Convert the HELM_PLUGIN_PATH to unix if cygpath is
 # available. This is the case when using MSYS2 or Cygwin
