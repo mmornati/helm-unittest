@@ -6,12 +6,12 @@ PROJECT_NAME="helm-unittest"
 PROJECT_GH="mmornati/$PROJECT_NAME"
 
 if [[ $(helm version | grep v3) ]]; then
-  HELM_COMMAND="helm env | grep HELM_PLUGINS | awk -F '=' '{print $2}' | sed 's/\"//g'"
+  HELM_PATH="$(helm env | grep HELM_PLUGINS | awk -F '=' '{print $2}' | sed 's/\"//g')"
 else
-  HELM_COMMAND="helm home"
+  HELM_PATH="$(helm home)"
 fi
 
-: ${HELM_PLUGIN_PATH:="$($HELM_COMMAND)/helm-unittest"}
+: ${HELM_PLUGIN_PATH:="$HELM_PATH/helm-unittest"}
 
 # Convert the HELM_PLUGIN_PATH to unix if cygpath is
 # available. This is the case when using MSYS2 or Cygwin
